@@ -1,3 +1,3 @@
 # BBT
 
-# Smart home based on mqttv3
+Smart home based on mqttv3
