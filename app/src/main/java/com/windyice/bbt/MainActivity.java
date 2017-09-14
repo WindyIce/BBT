@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final Button button_main2subscribe=(Button) findViewById(R.id.button_main2subscribe);
+        final Button button_main2dashboard=(Button) findViewById(R.id.button_main2dashboard);
 
         Intent intent=getIntent();
         String[] topicChosen=intent.getStringArrayExtra("topicsChosen");
@@ -45,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,Subscribe.class);
+                startActivity(intent);
+            }
+        });
+
+        button_main2dashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Dashboard.class);
                 startActivity(intent);
             }
         });
