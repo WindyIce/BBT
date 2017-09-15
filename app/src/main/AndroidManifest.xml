@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:launchMode="singleInstance"
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
@@ -21,9 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Subscribe" />
-        <activity android:name=".Dashboard" />
-        <activity android:name=".Publish"></activity>
+        <activity
+            android:launchMode="singleInstance"
+            android:name=".Subscribe" />
+        <activity
+            android:launchMode="singleInstance"
+            android:name=".Dashboard" />
+        <activity
+            android:launchMode="singleInstance"
+            android:name=".Publish"></activity>
     </application>
 
 </manifest>

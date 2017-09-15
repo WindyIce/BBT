@@ -246,7 +246,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void startReconnect() {
-        final long reconnectRate=1*1000;
+        final long reconnectRate=1*3000;
         scheduledExecutorService= Executors.newSingleThreadScheduledExecutor();
         scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
             @Override
