@@ -33,7 +33,7 @@ public class Subscribe extends AppCompatActivity {
 
         textView_subscribed.setText("");
         for(String a:MainActivity.topicsChosen){
-            textView_subscribed.append(""+a);
+            textView_subscribed.append(a+"\n");
         }
 
         final String[] topics=getResources().getStringArray(R.array.topics);
@@ -70,7 +70,7 @@ public class Subscribe extends AppCompatActivity {
                         MainActivity.topicsChosen.add(topicChosen);
                         textView_subscribed.setText("");
                         for(String a:MainActivity.topicsChosen){
-                            textView_subscribed.append("\n"+a);
+                            textView_subscribed.append(a+"\n");
                         }
                     }
                 }
@@ -93,7 +93,7 @@ public class Subscribe extends AppCompatActivity {
                         MainActivity.topicsChosen.remove(topicChosen);
                         textView_subscribed.setText("");
                         for(String a:MainActivity.topicsChosen){
-                            textView_subscribed.append("\n"+a);
+                            textView_subscribed.append(a+"\n");
                         }
                     }
                 }

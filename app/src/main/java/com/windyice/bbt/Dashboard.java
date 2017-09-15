@@ -42,6 +42,26 @@ public class Dashboard extends AppCompatActivity {
     private static List<String> toShow=new ArrayList<String>();
     private android.os.Handler handler;
 
+    class ControlThread implements Runnable {
+        private byte[] toPass;
+
+        public ControlThread(byte[] a){
+            toPass=a;
+        }
+
+        @Override
+        public void run() {
+            try {
+                MqttMessage mqttMessage=new MqttMessage(toPass);
+                mqttClient.publish("wuzeen", mqttMessage);
+            }
+            catch (Exception e){
+                //Toast.makeText(Dashboard.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        }
+    }
+
     private void connect(){
         new Thread(new Runnable() {
             @Override
@@ -62,6 +82,26 @@ public class Dashboard extends AppCompatActivity {
         }).start();
     }
 
+    private void control(String signal){
+        /*final MqttMessage message=new MqttMessage(signal.getBytes());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    mqttClient.publish("wuzeen", message);
+                }
+                catch (Exception e){
+                    //Toast.makeText(Dashboard.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+        }).start();*/
+
+        ControlThread controlThread=new ControlThread(signal.getBytes());
+        new Thread(controlThread).start();
+        startReconnect();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +114,10 @@ public class Dashboard extends AppCompatActivity {
         final ListView listView_dashboard=(ListView) findViewById(R.id.dashboard_listview);
         final Button button_dashboard2main=(Button) findViewById(R.id.dashboard2main_button);
         final Button button_clearDashBoard=(Button) findViewById(R.id.clearDashBoard_button);
-        final Button button_closelight_1=(Button) findViewById(R.id.control1_button);
+        final Button button_control_0=(Button) findViewById(R.id.control0_button);
+        final Button button_control_1=(Button) findViewById(R.id.control1_button);
+        final Button button_control_2=(Button) findViewById(R.id.control2_button);
+        final Button button_control_3=(Button) findViewById(R.id.control3_button);
 
         /*final String HOST="tcp://39.108.118.166:23";
         final String clientId="2233";
@@ -102,11 +145,13 @@ public class Dashboard extends AppCompatActivity {
 
                 @Override
                 public void messageArrived(String topic, MqttMessage message) throws Exception {
-                    System.out.println("messageArrived----------");
-                    Message msg = new Message();
-                    msg.what = 1;
-                    msg.obj = topic+"---"+message.toString();
-                    handler.sendMessage(msg);
+                    if(MainActivity.topicsChosen.contains(topic)) {
+                        System.out.println("messageArrived----------");
+                        Message msg = new Message();
+                        msg.what = 1;
+                        msg.obj = topic + "---" + message.toString();
+                        handler.sendMessage(msg);
+                    }
                 }
 
                 @Override
@@ -171,28 +216,37 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        button_closelight_1.setOnClickListener(new View.OnClickListener() {
+        button_control_0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final MqttMessage message=new MqttMessage("close_bulb".getBytes());
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            mqttClient.publish("bulb_control", message);
-                        }
-                        catch (Exception e){
-                            Toast.makeText(Dashboard.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            e.printStackTrace();
-                        }
-                    }
-                }).start();
+                control("0");
+            }
+        });
 
+        button_control_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                control("1");
+            }
+        });
+
+        button_control_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                control("2");
+            }
+        });
+
+        button_control_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                control("3");
             }
         });
     }
 
     private void startReconnect() {
+        final long reconnectRate=1*1000;
         scheduledExecutorService= Executors.newSingleThreadScheduledExecutor();
         scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
             @Override
@@ -201,6 +255,6 @@ public class Dashboard extends AppCompatActivity {
                     connect();
                 }
             }
-        },0*1000,10*1000, TimeUnit.MILLISECONDS);
+        },0,reconnectRate, TimeUnit.MILLISECONDS);
     }
 }

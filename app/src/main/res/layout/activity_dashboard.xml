@@ -25,10 +25,38 @@
         />
 
 
-    <Button
-        android:id="@+id/control1_button"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="close"/>
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/control0_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="close1"/>
+
+        <Button
+            android:id="@+id/control1_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="open1"/>
+
+        <Button
+            android:id="@+id/control2_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="close2"/>
+
+        <Button
+            android:id="@+id/control3_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="open2"/>
+    </LinearLayout>
+
 
 </LinearLayout>
