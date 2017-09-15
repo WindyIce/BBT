@@ -74,6 +74,7 @@ public class Dashboard extends AppCompatActivity {
         final ListView listView_dashboard=(ListView) findViewById(R.id.dashboard_listview);
         final Button button_dashboard2main=(Button) findViewById(R.id.dashboard2main_button);
         final Button button_clearDashBoard=(Button) findViewById(R.id.clearDashBoard_button);
+        final Button button_closelight_1=(Button) findViewById(R.id.control1_button);
 
         /*final String HOST="tcp://39.108.118.166:23";
         final String clientId="2233";
@@ -167,6 +168,26 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(Dashboard.this,MainActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        button_closelight_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final MqttMessage message=new MqttMessage("close_bulb".getBytes());
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            mqttClient.publish("bulb_control", message);
+                        }
+                        catch (Exception e){
+                            Toast.makeText(Dashboard.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+
             }
         });
     }

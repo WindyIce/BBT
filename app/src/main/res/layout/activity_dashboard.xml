@@ -10,9 +10,9 @@
     <ListView
         android:id="@+id/dashboard_listview"
         android:layout_width="match_parent"
-        android:layout_height="400dp"></ListView>
+        android:layout_height="350dp"></ListView>
 
-    <Button
+        <Button
         android:id="@+id/clearDashBoard_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,5 +25,10 @@
         />
 
 
+    <Button
+        android:id="@+id/control1_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="close"/>
 
 </LinearLayout>
