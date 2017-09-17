@@ -114,10 +114,7 @@ public class Dashboard extends AppCompatActivity {
         final ListView listView_dashboard=(ListView) findViewById(R.id.dashboard_listview);
         final Button button_dashboard2main=(Button) findViewById(R.id.dashboard2main_button);
         final Button button_clearDashBoard=(Button) findViewById(R.id.clearDashBoard_button);
-        final Button button_control_0=(Button) findViewById(R.id.control0_button);
-        final Button button_control_1=(Button) findViewById(R.id.control1_button);
-        final Button button_control_2=(Button) findViewById(R.id.control2_button);
-        final Button button_control_3=(Button) findViewById(R.id.control3_button);
+
 
         /*final String HOST="tcp://39.108.118.166:23";
         final String clientId="2233";
@@ -216,33 +213,6 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        button_control_0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                control("0");
-            }
-        });
-
-        button_control_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                control("1");
-            }
-        });
-
-        button_control_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                control("2");
-            }
-        });
-
-        button_control_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                control("3");
-            }
-        });
     }
 
     private void startReconnect() {

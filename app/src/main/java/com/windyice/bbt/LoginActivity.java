@@ -19,6 +19,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -206,12 +207,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        return !email.contains(" ");
+        //return email.contains("@");
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() > 4&&!password.contains(" ");
     }
 
     /**
@@ -318,6 +320,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mPassword = password;
         }
 
+        protected void login(){
+
+        }
+
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
@@ -326,9 +332,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 socket=new Socket(HOST,PORT);
                 outputStream=socket.getOutputStream();
                 printWriter=new PrintWriter(outputStream);
-                printWriter.write("L"+mEmail+" "+mPassword);   //"L" means login
+                printWriter.write("L"+" "+mEmail+" "+mPassword);   //"L" means login
                 printWriter.flush();
                 socket.shutdownOutput();
+
+
+                Thread.sleep(2000);
 
                 inputStream=socket.getInputStream();
                 BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(inputStream));
@@ -339,8 +348,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 printWriter.close();
                 outputStream.close();
                 socket.close();
-                if(info=="1"){
+                Log.d("fuck you",info);
+                if(info.equals("0")){
                     //DUMMY_CREDENTIALS[DUMMY_CREDENTIALS.length]=mEmail+":"+mPassword;
+
+                    Log.d("fuck you2233",info);
                     return true;
                 }
                 // Simulate network access.
@@ -363,7 +375,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 socket=new Socket(HOST,PORT);
                 outputStream=socket.getOutputStream();
                 printWriter=new PrintWriter(outputStream);
-                printWriter.write("R"+mEmail+" "+mPassword);   //"L" means login
+                printWriter.write("R"+" "+mEmail+" "+mPassword);   //"L" means login
                 printWriter.flush();
                 socket.shutdownOutput();
 
@@ -376,7 +388,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 printWriter.close();
                 outputStream.close();
                 socket.close();
-                if(info=="1"){
+                if(info.equals("0")){
                     //DUMMY_CREDENTIALS[DUMMY_CREDENTIALS.length]=mEmail+":"+mPassword;
                     return true;
                 }
