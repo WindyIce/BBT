@@ -25,11 +25,12 @@ public class Control extends AppCompatActivity {
 
     private final String HOST="tcp://39.108.118.166:1883";
     private final String clientId="2233";
-    private MqttClient mqttClient;
-    private MqttConnectOptions mqttConnectOptions;
+    //private MqttClient mqttClient;
+    //private MqttConnectOptions mqttConnectOptions;
     private ScheduledExecutorService scheduledExecutorService;
     //private static List<String> toShow=new ArrayList<String>();
     //private android.os.Handler handler;
+    private MqttBaseOperation mqttBaseOperation=new MqttBaseOperation(HOST,clientId);
 
     private class ControlThread implements Runnable {
         private byte[] toPass;
@@ -42,7 +43,7 @@ public class Control extends AppCompatActivity {
         public void run() {
             try {
                 MqttMessage mqttMessage=new MqttMessage(toPass);
-                mqttClient.publish("wuzeen", mqttMessage);
+                mqttBaseOperation.publish("wuzeen", mqttMessage);
             }
             catch (Exception e){
                 //Toast.makeText(Dashboard.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -53,7 +54,7 @@ public class Control extends AppCompatActivity {
 
 
 
-    private void connect(){
+    /*private void connect(){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -76,7 +77,7 @@ public class Control extends AppCompatActivity {
                 }
             }
         }).start();
-    }
+    }*/
 
     private void control(String signal){
         /*final MqttMessage message=new MqttMessage(signal.getBytes());
@@ -94,10 +95,10 @@ public class Control extends AppCompatActivity {
         }).start();*/
         Control.ControlThread controlThread=new Control.ControlThread(signal.getBytes());
         new Thread(controlThread).start();
-        startReconnect();
+        mqttBaseOperation.startReconnect(3000,true);
     }
 
-    private void startReconnect() {
+    /*private void startReconnect() {
         final long reconnectRate=1*3000;
         scheduledExecutorService= Executors.newSingleThreadScheduledExecutor();
         scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
@@ -108,7 +109,7 @@ public class Control extends AppCompatActivity {
                 }
             }
         },0,reconnectRate, TimeUnit.MILLISECONDS);
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,12 +130,13 @@ public class Control extends AppCompatActivity {
         final Button button_control_11=(Button) findViewById(R.id.control11_button);
 
         try {
-            mqttClient = new MqttClient(HOST, clientId, new MemoryPersistence());
+            /*mqttClient = new MqttClient(HOST, clientId, new MemoryPersistence());
             mqttConnectOptions=new MqttConnectOptions();
             mqttConnectOptions.setCleanSession(false);
             mqttConnectOptions.setConnectionTimeout(10);
-            mqttConnectOptions.setKeepAliveInterval(20);
-            mqttClient.setCallback(new MqttCallback() {
+            mqttConnectOptions.setKeepAliveInterval(20);*/
+            mqttBaseOperation.Setting(false,10,20);
+            mqttBaseOperation.setCallback(new MqttCallback() {
                 @Override
                 public void connectionLost(Throwable cause) {
                     //reconnection can be here.
@@ -159,7 +161,7 @@ public class Control extends AppCompatActivity {
                 }
             });
             //mqttClient.connect(mqttConnectOptions);
-            connect();
+            mqttBaseOperation.connect(true);
 
         }
         catch (Exception e){

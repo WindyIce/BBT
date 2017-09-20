@@ -36,11 +36,12 @@ public class Dashboard extends AppCompatActivity {
 
     private final String HOST="tcp://39.108.118.166:1883";
     private final String clientId="2233";
-    private MqttClient mqttClient;
-    private MqttConnectOptions mqttConnectOptions;
-    private ScheduledExecutorService scheduledExecutorService;
+    //private MqttClient mqttClient;
+    //private MqttConnectOptions mqttConnectOptions;
+    //private ScheduledExecutorService scheduledExecutorService;
     private static List<String> toShow=new ArrayList<String>();
-    private android.os.Handler handler;
+    //private android.os.Handler handler;
+    private MqttBaseOperation mqttBaseOperation=new MqttBaseOperation(HOST,clientId);
 
     class ControlThread implements Runnable {
         private byte[] toPass;
@@ -53,7 +54,7 @@ public class Dashboard extends AppCompatActivity {
         public void run() {
             try {
                 MqttMessage mqttMessage=new MqttMessage(toPass);
-                mqttClient.publish("wuzeen", mqttMessage);
+                mqttBaseOperation.publish("wuzeen", mqttMessage);
             }
             catch (Exception e){
                 //Toast.makeText(Dashboard.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -62,7 +63,7 @@ public class Dashboard extends AppCompatActivity {
         }
     }
 
-    private void connect(){
+     /*private void connect(){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -70,17 +71,17 @@ public class Dashboard extends AppCompatActivity {
                     mqttClient.connect(mqttConnectOptions);
                     Message message=new Message();
                     message.what=2;
-                    handler.sendMessage(message);
+                    mqttBaseOperation.getHandler().sendMessage(message);
                 }
                 catch (Exception e) {
                     e.printStackTrace();
                     Message message=new Message();
                     message.what=3;
-                    handler.sendMessage(message);
+                    mqttBaseOperation.getHandler().sendMessage(message);
                 }
             }
         }).start();
-    }
+    }*/
 
     private void control(String signal){
         /*final MqttMessage message=new MqttMessage(signal.getBytes());
@@ -99,7 +100,7 @@ public class Dashboard extends AppCompatActivity {
 
         ControlThread controlThread=new ControlThread(signal.getBytes());
         new Thread(controlThread).start();
-        startReconnect();
+        mqttBaseOperation.startReconnect(1*3000);
     }
 
 
@@ -128,12 +129,13 @@ public class Dashboard extends AppCompatActivity {
 
 
         try {
-            mqttClient = new MqttClient(HOST, clientId, new MemoryPersistence());
+            /*mqttClient = new MqttClient(HOST, clientId, new MemoryPersistence());
             mqttConnectOptions=new MqttConnectOptions();
             mqttConnectOptions.setCleanSession(false);
             mqttConnectOptions.setConnectionTimeout(10);
-            mqttConnectOptions.setKeepAliveInterval(20);
-            mqttClient.setCallback(new MqttCallback() {
+            mqttConnectOptions.setKeepAliveInterval(20);*/
+            mqttBaseOperation.Setting(false,10,20);
+            mqttBaseOperation.setCallback(new MqttCallback() {
                 @Override
                 public void connectionLost(Throwable cause) {
                     //reconnection can be here.
@@ -147,7 +149,7 @@ public class Dashboard extends AppCompatActivity {
                         Message msg = new Message();
                         msg.what = 1;
                         msg.obj = topic + "---" + message.toString();
-                        handler.sendMessage(msg);
+                        mqttBaseOperation.getHandler().sendMessage(msg);
                     }
                 }
 
@@ -158,7 +160,7 @@ public class Dashboard extends AppCompatActivity {
                 }
             });
             //mqttClient.connect(mqttConnectOptions);
-            connect();
+            mqttBaseOperation.connect();
 
         }
         catch (Exception e){
@@ -166,7 +168,7 @@ public class Dashboard extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        handler=new android.os.Handler(){
+        mqttBaseOperation.setHandler( new android.os.Handler(){
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
@@ -177,23 +179,25 @@ public class Dashboard extends AppCompatActivity {
                         break;
                     case 2:
                         Toast.makeText(Dashboard.this, "Connection successful", Toast.LENGTH_SHORT).show();
-                        try {
+                        /*try {
                             for(String a:MainActivity.topicsChosen){
                                 mqttClient.subscribe(a);
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
-                        }
+                        }*/
+                        mqttBaseOperation.subscribe(MainActivity.topicsChosen);
                         break;
                     case 3:
                         Toast.makeText(Dashboard.this, "Connection fail          Reconnecting......", Toast.LENGTH_SHORT).show();
-                        startReconnect();
+                        mqttBaseOperation.startReconnect(1*3000);
                         break;
                     default:
                         break;
                 }
             }
-        };
+        });
+        //handler=mqttBaseOperation.getHandler();
 
 
 
@@ -215,7 +219,7 @@ public class Dashboard extends AppCompatActivity {
 
     }
 
-    private void startReconnect() {
+    /*private void startReconnect() {
         final long reconnectRate=1*3000;
         scheduledExecutorService= Executors.newSingleThreadScheduledExecutor();
         scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
@@ -226,5 +230,5 @@ public class Dashboard extends AppCompatActivity {
                 }
             }
         },0,reconnectRate, TimeUnit.MILLISECONDS);
-    }
+    }*/
 }
