@@ -11,10 +11,11 @@
         android:layout_height="match_parent"
         tools:context="com.windyice.bbt.Dashboard">
 
-        <ListView
+        <com.github.ksoichiro.android.observablescrollview.ObservableListView
             android:id="@+id/dashboard_listviewf"
+
             android:layout_width="match_parent"
-            android:layout_height="350dp"></ListView>
+            android:layout_height="350dp"></com.github.ksoichiro.android.observablescrollview.ObservableListView>
 
         <Button
             android:id="@+id/clearDashBoard_buttonf"

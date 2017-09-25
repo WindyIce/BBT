@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,14 +24,25 @@
                 android:layout_weight="6"
                 ></Spinner>
 
-            <Button
+            <info.hoang8f.widget.FButton
                 android:id="@+id/subscribe_buttonf"
+                fbutton:buttonColor="@color/fbutton_color_concrete"
+                fbutton:shadowColor="@color/fbutton_color_concrete"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
+                fbutton:cornerRadius="5dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="Add"/>
-            <Button
+
+            <info.hoang8f.widget.FButton
                 android:id="@+id/delete_buttonf"
+                fbutton:buttonColor="@color/fbutton_color_clouds"
+                fbutton:shadowColor="@color/fbutton_color_clouds"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
+                fbutton:cornerRadius="5dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"

@@ -34,4 +34,6 @@ dependencies {
     compile 'org.json:org.json:chargebee-1.0'
     compile 'com.android.support:support-v4:26.+'
     testCompile 'junit:junit:4.12'
+    compile 'info.hoang8f:fbutton:1.0.5'
+    compile 'com.github.ksoichiro:android-observablescrollview:1.6.0'
 }
