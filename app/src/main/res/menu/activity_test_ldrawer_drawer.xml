@@ -7,13 +7,13 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="Subscribe" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_dashboard"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Dashboard" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_control"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Control" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"

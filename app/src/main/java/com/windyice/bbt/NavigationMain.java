@@ -18,9 +18,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class NavigationMain extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,SubscribeFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        SubscribeFragment.OnFragmentInteractionListener,
+        DashboardFragment.OnFragmentInteractionListener,
+        ControlFragment.OnFragmentInteractionListener{
 
     private SubscribeFragment subscribeFragment;
+    private DashboardFragment dashboardFragment;
+    private ControlFragment controlFragment;
 
     @Override
     public void onFragmentInteraction(Uri uri) {
@@ -52,6 +57,8 @@ public class NavigationMain extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         subscribeFragment=SubscribeFragment.newInstance("start","subscribe");
+        dashboardFragment=DashboardFragment.newInstance("start","dashboard");
+        controlFragment=ControlFragment.newInstance("start","control");
     }
 
     @Override
@@ -100,9 +107,19 @@ public class NavigationMain extends AppCompatActivity
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_dashboard) {
+            FragmentManager fragmentManager=getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_content,dashboardFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_control) {
+            FragmentManager fragmentManager=getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_content,controlFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
 
         } else if (id == R.id.nav_manage) {
 
