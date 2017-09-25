@@ -1,6 +1,7 @@
 package com.windyice.bbt;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -33,18 +34,36 @@ public class NavigationMain extends AppCompatActivity
     }
 
     @Override
+    protected void onStop() {
+        Intent intent1=new Intent(NavigationMain.this,MusicService.class);
+        stopService(intent1);
+        super.onStop();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent1=new Intent(NavigationMain.this,MusicService.class);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_ldrawer);
+        startService(intent1);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabn);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent=new Intent(NavigationMain.this,MusicService.class);
+                stopService(intent);
+            }
+        });
+
+        FloatingActionButton floatingActionButton1=(FloatingActionButton) findViewById(R.id.floatingActionButton1);
+        floatingActionButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(NavigationMain.this,MusicService.class);
+                startService(intent);
             }
         });
 
