@@ -3,7 +3,6 @@ package com.windyice.bbt;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
     public static List<String> topicsChosen=new ArrayList<>();
@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         final Button button_main2dashboard=(Button) findViewById(R.id.button_main2dashboard);
         final Button button_main2publish=(Button) findViewById(R.id.button_main2publish);
         final Button button_main2control=(Button) findViewById(R.id.button_main2control);
+        final Button button_main2audiocontrol=(Button) findViewById(R.id.button_main2audiocontrol);
+        final Button button_main2LDrawer=(Button) findViewById(R.id.button_main2LDrawer);
 
         Intent intent=getIntent();
         //String[] topicChosen=intent.getStringArrayExtra("topicsChosen");
@@ -82,7 +84,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        button_main2audiocontrol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,AudioControl.class);
+                startActivity(intent);
+            }
+        });
 
+        button_main2LDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,NavigationMain.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

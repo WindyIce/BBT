@@ -1,0 +1,60 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.windyice.bbt.SubscribeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:orientation="vertical"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.windyice.bbt.Subscribe">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Spinner
+                android:id="@+id/subscribe_spinnerf"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="6"
+                ></Spinner>
+
+            <Button
+                android:id="@+id/subscribe_buttonf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Add"/>
+            <Button
+                android:id="@+id/delete_buttonf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Delete"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Subscribed topics:"
+            android:textSize="40dp"
+            android:textColor="#000000"
+            />
+
+        <TextView
+            android:id="@+id/subscribe_textviewf"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:textSize="30dp"
+            android:textColor="#8f00ff"/>
+
+
+
+    </LinearLayout>
+
+
+</FrameLayout>
