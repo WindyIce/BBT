@@ -14,6 +14,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +40,7 @@ public class SubscribeFragment extends Fragment {
     private Button button_delete;
     private Button button_return;
     private TextView textView_subscribed;
-    private String[] topics;
+    public static List<String> topics=new ArrayList<String>();
     private String topicChosen;
 
     private OnFragmentInteractionListener mListener;
@@ -80,12 +83,19 @@ public class SubscribeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_subscribe, container, false);
+        if(!topics.contains("Temperature")) {
+            topics.add("Temperature");
+        }
+        if(!topics.contains("Brightness")) {
+            topics.add("Brightness");
+        }
+        if(!topics.contains("dht")) {
+            topics.add("dht");
+        }
         spinner_subscribe=(Spinner) view.findViewById(R.id.subscribe_spinnerf);
         button_subscribe=(Button) view.findViewById(R.id.subscribe_buttonf);
         button_delete=(Button) view.findViewById(R.id.delete_buttonf);
         textView_subscribed=(TextView) view.findViewById(R.id.subscribe_textviewf);
-
-        topics= new String[]{"Temperature","Brightness","dht"};
 
         textView_subscribed.setText("");
         for(String a:MainActivity.topicsChosen){
@@ -98,7 +108,7 @@ public class SubscribeFragment extends Fragment {
         spinner_subscribe.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                topicChosen=topics[i];
+                topicChosen=topics.get(i);
             }
 
             @Override

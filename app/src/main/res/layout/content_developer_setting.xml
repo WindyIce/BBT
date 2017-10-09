@@ -1,11 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.windyice.bbt.DeveloperSettingActivity"
     tools:showIn="@layout/activity_developer_setting">
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/developer_subscribe_edittext"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:hint="Enter your new topic:"
+                android:layout_weight="3"/>
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/developer_buttonf"
+                fbutton:buttonColor="@color/fbutton_color_concrete"
+                fbutton:shadowColor="@color/fbutton_color_concrete"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
+                fbutton:cornerRadius="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add"/>
+            <info.hoang8f.widget.FButton
+                android:id="@+id/developer_direct_buttonf"
+                fbutton:buttonColor="@color/fbutton_color_concrete"
+                fbutton:shadowColor="@color/fbutton_color_concrete"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
+                fbutton:cornerRadius="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add_dire"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/developer_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="50dp"
+                android:textColor="@color/fbutton_color_midnight_blue"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

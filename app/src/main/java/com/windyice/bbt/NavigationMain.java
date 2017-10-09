@@ -36,9 +36,15 @@ public class NavigationMain extends AppCompatActivity
     }
 
     @Override
-    protected void onStop() {
+    protected void onDestroy() {
         Intent intent1=new Intent(NavigationMain.this,MusicService.class);
         stopService(intent1);
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+
         super.onStop();
     }
 
