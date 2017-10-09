@@ -22,11 +22,13 @@ public class NavigationMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         SubscribeFragment.OnFragmentInteractionListener,
         DashboardFragment.OnFragmentInteractionListener,
-        ControlFragment.OnFragmentInteractionListener{
+        ControlFragment.OnFragmentInteractionListener,
+        SettingFragment.OnFragmentInteractionListener {
 
     private SubscribeFragment subscribeFragment;
     private DashboardFragment dashboardFragment;
     private ControlFragment controlFragment;
+    private SettingFragment settingFragment;
 
     @Override
     public void onFragmentInteraction(Uri uri) {
@@ -78,6 +80,7 @@ public class NavigationMain extends AppCompatActivity
         subscribeFragment=SubscribeFragment.newInstance("start","subscribe");
         dashboardFragment=DashboardFragment.newInstance("start","dashboard");
         controlFragment=ControlFragment.newInstance("start","control");
+        settingFragment=SettingFragment.newInstance("start","setting");
     }
 
     @Override
@@ -141,6 +144,11 @@ public class NavigationMain extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_manage) {
+            FragmentManager fragmentManager=getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_content,settingFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
 
         } else if (id == R.id.nav_share) {
 
