@@ -169,7 +169,7 @@
         <item>开启</item>
         <item>关闭</item>
     </string-array>
-    <string name="title_activity_test_ldrawer">TestLDrawer</string>
+    <string name="title_activity_test_ldrawer">WindyIce BBT</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

@@ -115,7 +115,11 @@ public class NavigationMain extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            FragmentManager fragmentManager=getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_content,settingFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         }
 
         return super.onOptionsItemSelected(item);
@@ -156,11 +160,12 @@ public class NavigationMain extends AppCompatActivity
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
+//        else if (id == R.id.nav_share) {
+//
+//        } else if (id == R.id.nav_send) {
+//
+//        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

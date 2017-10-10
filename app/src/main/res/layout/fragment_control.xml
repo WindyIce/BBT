@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,169 +6,187 @@
     tools:context="com.windyice.bbt.ControlFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <info.hoang8f.widget.FButton
+        android:id="@+id/control0_buttonf"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="close1"
+        fbutton:buttonColor="@color/fbutton_color_peter_river"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/fbutton_color_peter_river"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <info.hoang8f.widget.FButton
-                android:id="@+id/control0_buttonf"
-                fbutton:buttonColor="@color/fbutton_color_peter_river"
-                fbutton:shadowColor="@color/fbutton_color_peter_river"
-                fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp"
-                fbutton:cornerRadius="5dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="close1"/>
+    <info.hoang8f.widget.FButton
+        android:id="@+id/control1_buttonf"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/control0_buttonf"
+        android:layout_toRightOf="@+id/control0_buttonf"
+        android:text="open1"
+        fbutton:buttonColor="@color/fbutton_color_belize_hole"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/fbutton_color_belize_hole"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-            <info.hoang8f.widget.FButton
-                android:id="@+id/control1_buttonf"
-                fbutton:buttonColor="@color/fbutton_color_belize_hole"
-                fbutton:shadowColor="@color/fbutton_color_belize_hole"
-                fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp"
-                fbutton:cornerRadius="5dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="open1"/>
+    <info.hoang8f.widget.FButton
+        android:id="@+id/control2_buttonf"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/control1_buttonf"
+        android:layout_toRightOf="@+id/control1_buttonf"
+        android:text="close2"
+        fbutton:buttonColor="@color/fbutton_color_wet_asphalt"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/fbutton_color_wet_asphalt"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-            <info.hoang8f.widget.FButton
-                android:id="@+id/control2_buttonf"
-                fbutton:buttonColor="@color/fbutton_color_wet_asphalt"
-                fbutton:shadowColor="@color/fbutton_color_wet_asphalt"
-                fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp"
-                fbutton:cornerRadius="5dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="close2"/>
+    <info.hoang8f.widget.FButton
+        android:id="@+id/control3_buttonf"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/control2_buttonf"
+        android:layout_toRightOf="@+id/control2_buttonf"
+        android:text="open2"
+        fbutton:buttonColor="@color/fbutton_color_midnight_blue"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/fbutton_color_midnight_blue"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-            <info.hoang8f.widget.FButton
-                android:id="@+id/control3_buttonf"
-                fbutton:buttonColor="@color/fbutton_color_midnight_blue"
-                fbutton:shadowColor="@color/fbutton_color_midnight_blue"
-                fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp"
-                fbutton:cornerRadius="5dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="open2"/>
-        </LinearLayout>
+    <info.hoang8f.widget.FButton
+        android:id="@+id/control4_buttonf"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/control0_buttonf"
+        android:layout_alignStart="@+id/control0_buttonf"
+        android:layout_below="@+id/control0_buttonf"
+        android:layout_marginTop="16dp"
+        android:text="4"
+        fbutton:buttonColor="@color/fbutton_color_turquoise"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/fbutton_color_turquoise"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <info.hoang8f.widget.FButton
-                android:id="@+id/control4_buttonf"
-                fbutton:buttonColor="@color/fbutton_color_turquoise"
-                fbutton:shadowColor="@color/fbutton_color_turquoise"
-                fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp"
-                fbutton:cornerRadius="5dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="4"/>
+    <info.hoang8f.widget.FButton
+        android:id="@+id/control5_buttonf"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/control1_buttonf"
+        android:layout_alignStart="@id/control1_buttonf"
+        android:layout_alignTop="@id/control4_buttonf"
+        android:text="5"
+        fbutton:buttonColor="@color/fbutton_color_green_sea"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/fbutton_color_green_sea"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-            <info.hoang8f.widget.FButton
-                android:id="@+id/control5_buttonf"
-                fbutton:buttonColor="@color/fbutton_color_green_sea"
-                fbutton:shadowColor="@color/fbutton_color_green_sea"
-                fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp"
-                fbutton:cornerRadius="5dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="5"/>
+    <info.hoang8f.widget.FButton
+        android:id="@+id/control6_buttonf"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/control2_buttonf"
+        android:layout_alignStart="@id/control2_buttonf"
+        android:layout_alignTop="@+id/control5_buttonf"
+        android:text="6"
+        fbutton:buttonColor="@color/fbutton_color_emerald"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/fbutton_color_emerald"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-            <info.hoang8f.widget.FButton
-                android:id="@+id/control6_buttonf"
-                fbutton:buttonColor="@color/fbutton_color_emerald"
-                fbutton:shadowColor="@color/fbutton_color_emerald"
-                fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp"
-                fbutton:cornerRadius="5dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="6"/>
+    <info.hoang8f.widget.FButton
+        android:id="@+id/control7_buttonf"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/control3_buttonf"
+        android:layout_alignStart="@id/control3_buttonf"
+        android:layout_alignTop="@+id/control6_buttonf"
+        android:text="7"
+        fbutton:buttonColor="@color/fbutton_color_nephritis"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/fbutton_color_nephritis"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-            <info.hoang8f.widget.FButton
-                android:id="@+id/control7_buttonf"
-                fbutton:buttonColor="@color/fbutton_color_nephritis"
-                fbutton:shadowColor="@color/fbutton_color_nephritis"
-                fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp"
-                fbutton:cornerRadius="5dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="7"/>
-        </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <info.hoang8f.widget.FButton
-                android:id="@+id/control8_buttonf"
-                fbutton:buttonColor="@color/fbutton_color_amethyst"
-                fbutton:shadowColor="@color/fbutton_color_amethyst"
-                fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp"
-                fbutton:cornerRadius="5dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="8"/>
+    <info.hoang8f.widget.FButton
+        android:id="@+id/control8_buttonf"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/control4_buttonf"
+        android:layout_alignStart="@+id/control4_buttonf"
+        android:layout_below="@+id/control4_buttonf"
+        android:layout_marginTop="16dp"
+        android:text="8"
+        fbutton:buttonColor="@color/fbutton_color_amethyst"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/fbutton_color_amethyst"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-            <info.hoang8f.widget.FButton
-                android:id="@+id/control9_buttonf"
-                fbutton:buttonColor="@color/fbutton_color_wisteria"
-                fbutton:shadowColor="@color/fbutton_color_wisteria"
-                fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp"
-                fbutton:cornerRadius="5dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="9"/>
+    <info.hoang8f.widget.FButton
+        android:id="@+id/control9_buttonf"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/control5_buttonf"
+        android:layout_alignStart="@id/control5_buttonf"
+        android:layout_alignTop="@id/control8_buttonf"
+        android:text="9"
+        fbutton:buttonColor="@color/fbutton_color_wisteria"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/fbutton_color_wisteria"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-            <info.hoang8f.widget.FButton
-                android:id="@+id/control10_buttonf"
-                fbutton:buttonColor="@color/fbutton_color_alizarin"
-                fbutton:shadowColor="@color/fbutton_color_alizarin"
-                fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp"
-                fbutton:cornerRadius="5dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="10"/>
+    <info.hoang8f.widget.FButton
+        android:id="@+id/control10_buttonf"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/control6_buttonf"
+        android:layout_alignStart="@id/control6_buttonf"
+        android:layout_alignTop="@id/control9_buttonf"
+        android:text="10"
+        fbutton:buttonColor="@color/fbutton_color_alizarin"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/fbutton_color_alizarin"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-            <info.hoang8f.widget.FButton
-                android:id="@+id/control11_buttonf"
-                fbutton:buttonColor="@color/fbutton_color_pomegranate"
-                fbutton:shadowColor="@color/fbutton_color_pomegranate"
-                fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp"
-                fbutton:cornerRadius="5dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="11"/>
-        </LinearLayout>
+    <info.hoang8f.widget.FButton
+        android:id="@+id/control11_buttonf"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/control7_buttonf"
+        android:layout_alignStart="@id/control7_buttonf"
+        android:layout_alignTop="@id/control10_buttonf"
+        android:text="11"
+        fbutton:buttonColor="@color/fbutton_color_pomegranate"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/fbutton_color_pomegranate"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-    </LinearLayout>
-
-</FrameLayout>
+</RelativeLayout>
