@@ -18,6 +18,10 @@
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
             android:title="Setting" />
+        <item
+            android:id="@+id/nav_publish"
+            android:icon="@drawable/snow"
+            android:title="Publish"/>
     </group>
 
     <!--<item android:title="Communicate">-->

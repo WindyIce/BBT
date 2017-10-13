@@ -1,0 +1,37 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.windyice.bbt.PublishFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/publish_topic_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Topic:"/>
+
+        <EditText
+            android:id="@+id/publish_message_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Message:"/>
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/publish_buttonf"
+            fbutton:buttonColor="@color/fbutton_color_clouds"
+            fbutton:shadowColor="@color/fbutton_color_silver"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            fbutton:cornerRadius="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add"/>
+    </LinearLayout>
+
+
+</FrameLayout>

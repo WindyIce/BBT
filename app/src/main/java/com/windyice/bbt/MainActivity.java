@@ -84,13 +84,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button_main2audiocontrol.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,AudioControl.class);
-                startActivity(intent);
-            }
-        });
 
         button_main2LDrawer.setOnClickListener(new View.OnClickListener() {
             @Override

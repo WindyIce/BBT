@@ -29,7 +29,6 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".Control" />
-        <activity android:name=".AudioControl" />
         <activity
             android:name=".NavigationMain"
             android:label="@string/title_activity_test_ldrawer"
@@ -47,10 +46,6 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity
-            android:name=".Setting"
-            android:label="@string/title_activity_setting"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DeveloperSettingActivity"
             android:label="@string/title_activity_developer_setting"

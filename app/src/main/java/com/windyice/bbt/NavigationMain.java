@@ -23,12 +23,14 @@ public class NavigationMain extends AppCompatActivity
         SubscribeFragment.OnFragmentInteractionListener,
         DashboardFragment.OnFragmentInteractionListener,
         ControlFragment.OnFragmentInteractionListener,
-        SettingFragment.OnFragmentInteractionListener {
+        SettingFragment.OnFragmentInteractionListener,
+        PublishFragment.OnFragmentInteractionListener {
 
     private SubscribeFragment subscribeFragment;
     private DashboardFragment dashboardFragment;
     private ControlFragment controlFragment;
     private SettingFragment settingFragment;
+    private PublishFragment publishFragment;
 
     @Override
     public void onFragmentInteraction(Uri uri) {
@@ -87,6 +89,7 @@ public class NavigationMain extends AppCompatActivity
         dashboardFragment=DashboardFragment.newInstance("start","dashboard");
         controlFragment=ControlFragment.newInstance("start","control");
         settingFragment=SettingFragment.newInstance("start","setting");
+        publishFragment=PublishFragment.newInstance("start","publish");
     }
 
     @Override
@@ -157,6 +160,13 @@ public class NavigationMain extends AppCompatActivity
             FragmentManager fragmentManager=getSupportFragmentManager();
             android.support.v4.app.FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.frame_content,settingFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+
+        }else if(id==R.id.nav_publish){
+            FragmentManager fragmentManager=getSupportFragmentManager();
+            android.support.v4.app.FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_content,publishFragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
