@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
@@ -38,6 +39,7 @@ public class ControlFragment extends Fragment {
 
     private final String HOST="tcp://39.108.118.166:1883";
     private final String clientId="2233";
+    private String prefix="";
 
     private Button button_control_0;
     private Button button_control_1;
@@ -51,6 +53,9 @@ public class ControlFragment extends Fragment {
     private Button button_control_9;
     private Button button_control_10;
     private Button button_control_11;
+
+    private EditText editText_prefix;
+    private Button button_prefix;
 
     private MqttBaseOperation mqttBaseOperation;
 
@@ -102,6 +107,16 @@ public class ControlFragment extends Fragment {
         button_control_9=view.findViewById(R.id.control9_buttonf);
         button_control_10=view.findViewById(R.id.control10_buttonf);
         button_control_11=view.findViewById(R.id.control11_buttonf);
+
+        editText_prefix=view.findViewById(R.id.subscribe_edittext);
+        button_prefix=view.findViewById(R.id.addprefix_buttonf);
+
+        button_prefix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                prefix=editText_prefix.getText().toString();
+            }
+        });
 
         mqttBaseOperation=new MqttBaseOperation(HOST,clientId);
 
@@ -233,14 +248,16 @@ public class ControlFragment extends Fragment {
 
     private class ControlThread implements Runnable {
         private byte[] toPass;
-        public ControlThread(byte[] a){
+        private String topic;
+        public ControlThread(String _topic,byte[] a){
+            topic=_topic;
             toPass=a;
         }
         @Override
         public void run() {
             try {
                 MqttMessage mqttMessage=new MqttMessage(toPass);
-                mqttBaseOperation.publish("wuzeen", mqttMessage);
+                mqttBaseOperation.publish(topic, mqttMessage);
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -249,9 +266,16 @@ public class ControlFragment extends Fragment {
     }
 
     private void control(String signal){
-        ControlThread controlThread=new ControlThread(signal.getBytes());
-        new Thread(controlThread).start();
-        mqttBaseOperation.startReconnect(3000,true);
+        if(prefix.equals("")){
+            ControlThread controlThread=new ControlThread("wuzeen",signal.getBytes());
+            new Thread(controlThread).start();
+            mqttBaseOperation.startReconnect(3000,true);
+        }
+        else {
+            ControlThread controlThread = new ControlThread(prefix,signal.getBytes());
+            new Thread(controlThread).start();
+            mqttBaseOperation.startReconnect(3000, true);
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event

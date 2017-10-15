@@ -189,4 +189,24 @@
         fbutton:shadowEnabled="true"
         fbutton:shadowHeight="5dp" />
 
+    <EditText
+        android:id="@+id/subscribe_edittext"
+        android:layout_alignParentBottom="true"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter your prefix: "/>
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/addprefix_buttonf"
+        fbutton:buttonColor="@color/fbutton_color_concrete"
+        fbutton:shadowColor="@color/fbutton_color_concrete"
+        fbutton:shadowEnabled="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/subscribe_edittext"
+        fbutton:shadowHeight="5dp"
+        fbutton:cornerRadius="5dp"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="Set"/>
+
 </RelativeLayout>
