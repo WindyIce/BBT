@@ -39,8 +39,8 @@ public class NavigationMain extends AppCompatActivity
 
     @Override
     protected void onDestroy() {
-        Intent intent1=new Intent(NavigationMain.this,MusicService.class);
-        stopService(intent1);
+//        Intent intent1=new Intent(NavigationMain.this,MusicService.class);
+//        stopService(intent1);
         super.onDestroy();
     }
 
@@ -52,10 +52,10 @@ public class NavigationMain extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Intent intent1=new Intent(NavigationMain.this,MusicService.class);
+        //Intent intent1=new Intent(NavigationMain.this,MusicService.class);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_ldrawer);
-        startService(intent1);
+        //startService(intent1);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -63,8 +63,8 @@ public class NavigationMain extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(NavigationMain.this,MusicService.class);
-                stopService(intent);
+//                Intent intent=new Intent(NavigationMain.this,MusicService.class);
+//                stopService(intent);
             }
         });
 
@@ -72,8 +72,8 @@ public class NavigationMain extends AppCompatActivity
         floatingActionButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(NavigationMain.this,MusicService.class);
-                startService(intent);
+//                Intent intent=new Intent(NavigationMain.this,MusicService.class);
+//                startService(intent);
             }
         });
 
