@@ -7,3 +7,7 @@
 /build
 /captures
 .externalNativeBuild
+*.apk
+*.wav
+*.mp3
+*.mid
